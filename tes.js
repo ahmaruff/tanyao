@@ -1,5 +1,5 @@
 var app = {}
-app.serverUrl = 'wschatserver-l5igk5tp.b4a.run/session';
+app.serverUrl = 'wschatserver-l5igk5tp.b4a.run';
 app.ws = undefined;
 app.chatContainer = undefined;
 app.sessionContainer = undefined;
