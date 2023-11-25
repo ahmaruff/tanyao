@@ -14,9 +14,7 @@ app.generateNewSession = async function(tp) {
     tp = 'PRIVATE'
   }
 
-  const resp = await fetch("https://"+app.serverUrl+"/session/create?type="+tp, {
-  referrerPolicy: "unsafe_url"
-  });
+  const resp = await fetch("https://"+app.serverUrl+"/session/create?type="+tp);
   let sessiondata = await resp.json();
   console.log(sessiondata);
 
@@ -31,7 +29,6 @@ app.generateNewUserAccount = async function() {
   }
   const resp = await fetch("https://"+app.serverUrl+"/user/create", {
     method: 'POST',
-    referrerPolicy: "unsafe_url",
     headers: {
       'Accept': 'application/json',
       'Content-type': 'application/json',
