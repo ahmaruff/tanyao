@@ -1,5 +1,5 @@
 var app = {}
-app.serverUrl = 'https://wschatserver-l5igk5tp.b4a.run/session';
+app.serverUrl = 'wschatserver-l5igk5tp.b4a.run/session';
 app.ws = undefined;
 app.chatContainer = undefined;
 app.sessionContainer = undefined;
@@ -14,7 +14,9 @@ app.generateNewSession = async function(tp) {
     tp = 'PRIVATE'
   }
 
-  const resp = await fetch("http://"+app.serverUrl+"/session/create?type="+tp);
+  const resp = await fetch("https://"+app.serverUrl+"/session/create?type="+tp, {
+  referrerPolicy: "unsafe_url"
+  });
   let sessiondata = await resp.json();
   console.log(sessiondata);
 
@@ -27,8 +29,9 @@ app.generateNewUserAccount = async function() {
   if(nm == null || nm == '') {
     nm = "anonymous"
   }
-  const resp = await fetch("http://"+app.serverUrl+"/user/create", {
+  const resp = await fetch("https://"+app.serverUrl+"/user/create", {
     method: 'POST',
+    referrerPolicy: "unsafe_url",
     headers: {
       'Accept': 'application/json',
       'Content-type': 'application/json',
@@ -75,7 +78,7 @@ app.closeSession = function(){
 
 app.getSession = async function(){
   localStorage.removeItem('sessionList');
-  const resp = await fetch("http://"+app.serverUrl+"/session");
+  const resp = await fetch('https://'+app.serverUrl+"/session");
   let sessiondata = await resp.json();
   // console.log(sessiondata);
   localStorage.setItem('sessionList', JSON.stringify(sessiondata));
@@ -151,9 +154,9 @@ app.init = async function () {
     }
     app.showSessionList();
 
-    // nm = prompt("Enter Your Name Please: ") || "anonymous"
-    // localStorage.setItem('user_name', nm);
-    // app.generateNewUserAccount();
+    nm = prompt("Enter Your Name Please: ") || "anonymous"
+    localStorage.setItem('user_name', nm);
+    app.generateNewUserAccount();
 
     // let s_id = localStorage.getItem('session_id');
     let u_id = localStorage.getItem('user_id');
