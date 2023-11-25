@@ -191,7 +191,7 @@ app.websoc = function(sessionId) {
   let u_id = localStorage.getItem('user_id');
   let u_name = localStorage.getItem('user_name');
   
-  app.ws = new WebSocket("ws://"+app.serverUrl+"/ws?session_id=" + sessionId + "&user_id="+u_id)
+  app.ws = new WebSocket("wss://"+app.serverUrl+"/ws?session_id=" + sessionId + "&user_id="+u_id)
 
   app.ws.onopen = function() {
       var message = 'I am connected'
