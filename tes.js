@@ -1,5 +1,5 @@
 var app = {}
-app.serverUrl = '127.0.0.1:5000';
+app.serverUrl = 'https://wschatserver-l5igk5tp.b4a.run/session';
 app.ws = undefined;
 app.chatContainer = undefined;
 app.sessionContainer = undefined;
@@ -151,9 +151,9 @@ app.init = async function () {
     }
     app.showSessionList();
 
-    nm = prompt("Enter Your Name Please: ") || "anonymous"
-    localStorage.setItem('user_name', nm);
-    app.generateNewUserAccount();
+    // nm = prompt("Enter Your Name Please: ") || "anonymous"
+    // localStorage.setItem('user_name', nm);
+    // app.generateNewUserAccount();
 
     // let s_id = localStorage.getItem('session_id');
     let u_id = localStorage.getItem('user_id');
